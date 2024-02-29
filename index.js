@@ -9,7 +9,9 @@ const app = new App({
 
 //メッセージが投稿された時に呼ばれるメソッド
 app.message(async ({ message, say }) => {
-  await say(message.text);
+  await if(message.includes("abc"))
+    say(message.text);
+  }
 });
 //アプリが起動時に呼ばれるメソッド
 (async () => {
