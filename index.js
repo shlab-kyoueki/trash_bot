@@ -23,6 +23,7 @@ app.message(async ({ message, say }) => {
     const numbers = message.text.match(numberRegex); //部屋の取得
     if (numbers) {
       const room = numbers.join(", ");
+      //b4,m1選定（ランダムに取得)
       if (room == 306) {
         var randomIndex = Math.floor(Math.random() * b4306.length);
         b4 = b4306[randomIndex];
