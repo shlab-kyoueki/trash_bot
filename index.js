@@ -74,6 +74,15 @@ app.message(async ({ message, say }) => {
       await say(`${b4}, ${m1}`);
     }
   }
+  else if(message.text.includes("reset")){
+    arrayFromFile.b4306=b4306;
+    arrayFromFile.m1306=m1306;
+    arrayFromFile.b4310=b4310;
+    arrayFromFile.m1310=m1310;
+    arrayFromFile.b4315=b4315;
+    arrayFromFile.m1315=m1315;
+    await say(`ok`);
+  }
 });
 //アプリが起動時に呼ばれるメソッド
 (async () => {
