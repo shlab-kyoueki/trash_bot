@@ -15,6 +15,10 @@ const m1315 = ["ははは", "ひひひ", "ふふふ", "へへへ", "ほほほ"];
 
 //メッセージが投稿された時に呼ばれるメソッド
 app.message(async ({ message, say }) => {
+  const fs = require('fs');
+  const filePath = 'arrayData.json';
+  const data = fs.readFileSync(filePath, 'utf8');
+  const arrayFromFile = JSON.parse(data);
   var b4;
   var m1;
   const numberRegex = /\d+/g;
