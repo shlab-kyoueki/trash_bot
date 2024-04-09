@@ -27,6 +27,8 @@ app.message(async ({ message, say }) => {
   //依頼判定
   if (message.text.includes("ゴミ出し")) {
     const numbers = message.text.match(numberRegex); //部屋の取得ではなく人数の取得M1ー＞B4
+    var b4s=[];
+    var m1s=[];
     //b4,m1選定（ランダムに取得)
     // if (numbers) {
       // const room = numbers.join(", ");
@@ -38,7 +40,7 @@ app.message(async ({ message, say }) => {
         if(arrayFromFile.m1.length==0){
           arrayFromFile.m1=m1;
         }
-      say(`${m1}`)
+      m1s.push(m1)
     }
     for(let i=0; i< numbers[1];i++){
       var randomIndex = Math.floor(Math.random() * arrayFromFile.b4.length);
@@ -47,7 +49,7 @@ app.message(async ({ message, say }) => {
         if(arrayFromFile.b4.length==0){
           arrayFromFile.b4=b4;
         }
-      say(`${b4}`)
+      b4s.push(b4)
     }
       // if (room == 306) {
       //   var randomIndex = Math.floor(Math.random() * arrayFromFile.b4306.length);
@@ -92,7 +94,7 @@ app.message(async ({ message, say }) => {
       //   }
       // }
       fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
-      // await say(`${b4}, ${m1}`);
+      await say(`${m1s}, ${b4s}`);
     // }
   }
   // else if(message.text.includes("reset")){
