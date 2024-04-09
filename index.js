@@ -26,7 +26,7 @@ app.message(async ({ message, say }) => {
   const numberRegex = /\d+/g;
   //依頼判定
   if (message.text.includes("ゴミ出し")) {
-    // const numbers = message.text.match(numberRegex); //部屋の取得
+    const numbers = message.text.match(numberRegex); //部屋の取得ではなく人数の取得M1ー＞B4
     //b4,m1選定（ランダムに取得)
     // if (numbers) {
       // const room = numbers.join(", ");
