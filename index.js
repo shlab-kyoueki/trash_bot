@@ -30,18 +30,23 @@ app.message(async ({ message, say }) => {
     //b4,m1選定（ランダムに取得)
     // if (numbers) {
       // const room = numbers.join(", ");
+    await say(numbers[1], numbers[0])
+    for(let i=0; i< numbers[1];i++){
       var randomIndex = Math.floor(Math.random() * arrayFromFile.b4.length);
         b4 = arrayFromFile.b4[randomIndex];
         arrayFromFile.b4.splice(randomIndex, 1);
         if(arrayFromFile.b4.length==0){
           arrayFromFile.b4=b4;
         }
+    }
+    for(let i=0;i<numbers[0]; i++){
         randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
         m1 = arrayFromFile.m1[randomIndex];
         arrayFromFile.m1.splice(randomIndex, 1);
         if(arrayFromFile.m1.length==0){
           arrayFromFile.m1=m1;
         }
+    }
       // if (room == 306) {
       //   var randomIndex = Math.floor(Math.random() * arrayFromFile.b4306.length);
       //   b4 = arrayFromFile.b4306[randomIndex];
