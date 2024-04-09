@@ -30,15 +30,7 @@ app.message(async ({ message, say }) => {
     //b4,m1選定（ランダムに取得)
     // if (numbers) {
       // const room = numbers.join(", ");
-    await say(numbers[1], numbers[0])
-    for(let i=0; i< numbers[1];i++){
-      var randomIndex = Math.floor(Math.random() * arrayFromFile.b4.length);
-        b4 = arrayFromFile.b4[randomIndex];
-        arrayFromFile.b4.splice(randomIndex, 1);
-        if(arrayFromFile.b4.length==0){
-          arrayFromFile.b4=b4;
-        }
-    }
+    // await say(`${numbers[1]},  ${numbers[0]}`)
     for(let i=0;i<numbers[0]; i++){
         randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
         m1 = arrayFromFile.m1[randomIndex];
@@ -46,6 +38,16 @@ app.message(async ({ message, say }) => {
         if(arrayFromFile.m1.length==0){
           arrayFromFile.m1=m1;
         }
+      say(`${m1}`)
+    }
+    for(let i=0; i< numbers[1];i++){
+      var randomIndex = Math.floor(Math.random() * arrayFromFile.b4.length);
+        b4 = arrayFromFile.b4[randomIndex];
+        arrayFromFile.b4.splice(randomIndex, 1);
+        if(arrayFromFile.b4.length==0){
+          arrayFromFile.b4=b4;
+        }
+      say(`${b4}`)
     }
       // if (room == 306) {
       //   var randomIndex = Math.floor(Math.random() * arrayFromFile.b4306.length);
@@ -90,7 +92,7 @@ app.message(async ({ message, say }) => {
       //   }
       // }
       fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
-      await say(`${b4}, ${m1}`);
+      // await say(`${b4}, ${m1}`);
     // }
   }
   // else if(message.text.includes("reset")){
