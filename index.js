@@ -19,7 +19,7 @@ app.message(async ({ message, say }) => {
   var m1;
   const numberRegex = /\d+/g;
   //依頼判定
-  if (message.text.includes("ゴミ出し")) {
+  if (message.text.includes("ゴミ出しお願いします")) {
         randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
         m1 = arrayFromFile.m1[randomIndex];
         arrayFromFile.m1.splice(randomIndex, 1);
