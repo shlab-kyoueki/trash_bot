@@ -19,7 +19,7 @@ app.message(async ({ message, say }) => {
   var m1;
   const numberRegex = /\d+/g;
   //依頼判定
-  if (message.text.includes("ゴミ出しお願いします")) {
+  if (message.text.includes("ゴミ出し")) {
         randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
         m1 = arrayFromFile.m1[randomIndex];
         arrayFromFile.m1.splice(randomIndex, 1);
@@ -33,7 +33,7 @@ app.message(async ({ message, say }) => {
           arrayFromFile.b4=b4_def;
         }
       fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
-      await say(`@channel ${m1}さん, ${b4}さん　お願いします`);
+      await say(`<!channel>\n ${m1}さん, ${b4}さん　お願いします`);
   }
   // else if(message.text.includes("reset")){
   //   arrayFromFile.b4=b4_def;
