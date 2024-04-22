@@ -20,18 +20,18 @@ app.message(async ({ message, say }) => {
   const numberRegex = /\d+/g;
   //依頼判定
   if (message.text.includes("ゴミ出しお願いします")) {
-        randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
-        m1 = arrayFromFile.m1[randomIndex];
-        arrayFromFile.m1.splice(randomIndex, 1);
-        if(arrayFromFile.m1.length==0){
-          arrayFromFile.m1=m1_def;
-        }
+      randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
+      m1 = arrayFromFile.m1[randomIndex];
+      arrayFromFile.m1.splice(randomIndex, 1);
+      if(arrayFromFile.m1.length==0){
+        arrayFromFile.m1=m1_def;
+      }
       var randomIndex = Math.floor(Math.random() * arrayFromFile.b4.length);
-        b4 = arrayFromFile.b4[randomIndex];
-        arrayFromFile.b4.splice(randomIndex, 1);
-        if(arrayFromFile.b4.length==0){
-          arrayFromFile.b4=b4_def;
-        }
+      b4 = arrayFromFile.b4[randomIndex];
+      arrayFromFile.b4.splice(randomIndex, 1);
+      if(arrayFromFile.b4.length==0){
+        arrayFromFile.b4=b4_def;
+      }
       fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
       await say(`<!channel>\n ${m1}さん, ${b4}さん　お願いします`);
   }
