@@ -17,7 +17,7 @@ app.message(async ({ message, say }) => {
   const arrayFromFile = JSON.parse(data);
   var b4;
   var m1;
-  const numberRegex = /\d+/g;
+  // const numberRegex = /\d+/g;
   //依頼判定
   if (message.text.includes("ゴミ出しお願いします")) {
       randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
