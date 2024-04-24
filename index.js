@@ -20,7 +20,7 @@ app.message(async ({ message, say }) => {
   var m1;
   // const numberRegex = /\d+/g;
   //依頼判定
-  if (message.text.includes("ゴミ出しお願いします")) {
+  if (message.text.includes("ゴミ出しお願いします") && message.ts) {
       randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
       m1 = arrayFromFile.m1[randomIndex];  //指名する人を求める
       arrayFromFile.m1.splice(randomIndex, 1);  //指名した分削る
