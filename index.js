@@ -1,7 +1,7 @@
 const { App } = require("@slack/bolt");
 const store = require("./store");
-const AWS = require('aws-sdk');
-const lambda = new AWS.Lambda({ region: 'ap-northeast-1' });
+// const AWS = require('aws-sdk');
+// const lambda = new AWS.Lambda({ region: 'ap-northeast-1' });
 const slackToken = process.env.SLACK_TOKEN
 
 const app = new App({
