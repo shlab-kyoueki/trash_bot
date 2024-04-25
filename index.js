@@ -1,5 +1,8 @@
 const { App } = require("@slack/bolt");
 const store = require("./store");
+const AWS = require('aws-sdk');
+const lambda = new AWS.Lambda({ region: 'ap-northeast-1' });
+const slackToken = process.env.SLACK_TOKEN
 
 const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -53,10 +56,9 @@ const m1_def=["宇都宮 優巳","王 若泰","川上 拓真","永井 寿弥", "
 
 //eventAPIを使用
 
-const slackToken = process.env.SLACK_TOKEN
-
 exports.index = async (event, context) => {
   const body = JSON.parse(event.body);
+  await context.postMessage(`OK`);
   if (!(body.token === slackToken)) return {"statusCode": 401, "body": "Missing Token"}
   // 再送かをチェック
   if (event.headers['X-Slack-Retry-Num']) {
