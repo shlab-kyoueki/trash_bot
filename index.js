@@ -19,9 +19,10 @@ app.message(async ({ message, say }) => {
   var b4;
   var m1;
   var date = new Date().getTime()/1000.0;
+  // await say(`${date},${message.threads_ts}`)
   // const numberRegex = /\d+/g;
   //依頼判定
-  if (message.text.includes("ゴミ出しお願いします") && message.threads.ts +1000　> date) {　//&& message.ts
+  if (message.text.includes("ゴミ出しお願いします") && ((message.threads_ts +1)　> date)) {　//&& message.ts
       randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
       m1 = arrayFromFile.m1[randomIndex];  //指名する人を求める
       arrayFromFile.m1.splice(randomIndex, 1);  //指名した分削る
