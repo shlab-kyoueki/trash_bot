@@ -21,13 +21,14 @@ app.message(async ({ message, say }) => {
   const arrayFromFile = JSON.parse(data);
   var b4;
   var m1;
-  // var date = new Date().getTime()/1000.0 -1.0;
+  var date = new Date().getTime()/1000.0 -1.0;
   // await say(`${date},${message.ts}`)
   // const numberRegex = /\d+/g;
+  console.log(`receive message @ ${date} (message.ts = ${message.ts})`)
   //依頼判定
   if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {　//&& (message.ts　> date) && message.headers['X-Slack-Retry-Num']==0
       arrayFromFile.ts = message.ts
-      console
+      console.log(`processing... (message.ts = ${message.ts})`)
       randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
       m1 = arrayFromFile.m1[randomIndex];  //指名する人を求める
       arrayFromFile.m1.splice(randomIndex, 1);  //指名した分削る
