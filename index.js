@@ -25,11 +25,12 @@ app.message(async ({ message, say }) => {
   // await say(`${date},${message.ts}`)
   // const numberRegex = /\d+/g;
   var fd = fs.openSync("log.txt", "a");
-  fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})`)
+  fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})\n`);
   //依頼判定
   if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {　//&& (message.ts　> date) && message.headers['X-Slack-Retry-Num']==0
-      arrayFromFile.ts = message.ts
-      console.log(`processing... (message.ts = ${message.ts})`)
+      arrayFromFile.ts = message.ts;
+      var date = new Date().getTime()/1000.0;
+      fs.writeSync(fd, `processing @ ${date} (message.ts = ${message.ts})\n`);
       randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
       m1 = arrayFromFile.m1[randomIndex];  //指名する人を求める
       arrayFromFile.m1.splice(randomIndex, 1);  //指名した分削る
@@ -45,7 +46,9 @@ app.message(async ({ message, say }) => {
       fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
       await say(`<!channel>\n ${m1}さん, ${b4}さん　お願いします`);
   }
-  fs.closeSync(fd)
+  var date = new Date().getTime()/1000.0;
+  fs.writeSync(fd, `finished @ ${date} (message.ts = ${message.ts})\n`);
+  fs.closeSync(fd);
   // else if(message.text.includes("reset")){
   //   arrayFromFile.b4=b4_def;
   //   arrayFromFile.m1=m1_def;
