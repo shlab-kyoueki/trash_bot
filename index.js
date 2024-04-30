@@ -21,10 +21,11 @@ app.message(async ({ message, say }) => {
   const arrayFromFile = JSON.parse(data);
   var b4;
   var m1;
-  var date = new Date().getTime()/1000.0 -1.0;
+  var date = new Date().getTime()/1000.0;
   // await say(`${date},${message.ts}`)
   // const numberRegex = /\d+/g;
-  console.log(`receive message @ ${date} (message.ts = ${message.ts})`)
+  var fd = fs.openSync("log.txt", "a");
+  fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})`)
   //依頼判定
   if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {　//&& (message.ts　> date) && message.headers['X-Slack-Retry-Num']==0
       arrayFromFile.ts = message.ts
@@ -44,6 +45,7 @@ app.message(async ({ message, say }) => {
       fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
       await say(`<!channel>\n ${m1}さん, ${b4}さん　お願いします`);
   }
+  fs.closeSync(fd)
   // else if(message.text.includes("reset")){
   //   arrayFromFile.b4=b4_def;
   //   arrayFromFile.m1=m1_def;
