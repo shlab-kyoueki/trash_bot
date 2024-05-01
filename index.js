@@ -30,6 +30,7 @@ app.message(async ({ message, say }) => {
   //依頼判定
   if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {　//&& (message.ts　> date) && message.headers['X-Slack-Retry-Num']==0
       arrayFromFile.ts = message.ts;
+      fs.writeFile(filePath, JSON.stringify(arrayFromFile));
       var date = new Date().getTime()/1000.0;
       console.log(`processing @ ${date} (message.ts = ${message.ts})`)
       fs.writeSync(fd, `processing @ ${date} (message.ts = ${message.ts})\n`);
@@ -50,7 +51,7 @@ app.message(async ({ message, say }) => {
   }
   var date = new Date().getTime()/1000.0;
   console.log(`finished @ ${date} (message.ts = ${message.ts})`)
-  fs.writeSync(fd, `finished @ ${date} (message.ts = ${message.ts})\n`);
+  fs.writeSync(fd, `finished @ ${date} (message.ts = ${message.ts})\n\n`);
   fs.closeSync(fd);
   // else if(message.text.includes("reset")){
   //   arrayFromFile.b4=b4_def;
