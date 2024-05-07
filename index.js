@@ -32,7 +32,7 @@ app.message(async ({ message, say }) => {
       arrayFromFile.ts = message.ts;
       fs.writeFile(filePath, JSON.stringify(arrayFromFile));
       var date = new Date().getTime()/1000.0;
-      console.log(`processing @ ${date} (message.ts = ${message.ts})`)
+      console.log(`processing @ ${date} (message.ts = ${message.ts})`);
       fs.writeSync(fd, `processing @ ${date} (message.ts = ${message.ts})\n`);
       randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
       m1 = arrayFromFile.m1[randomIndex];  //指名する人を求める
@@ -50,7 +50,7 @@ app.message(async ({ message, say }) => {
       await say(`<!channel>\n ${m1}さん, ${b4}さん　お願いします`);
   }
   var date = new Date().getTime()/1000.0;
-  console.log(`finished @ ${date} (message.ts = ${message.ts})`)
+  console.log(`finished @ ${date} (message.ts = ${message.ts})`);
   fs.writeSync(fd, `finished @ ${date} (message.ts = ${message.ts})\n\n`);
   fs.closeSync(fd);
   // else if(message.text.includes("reset")){
