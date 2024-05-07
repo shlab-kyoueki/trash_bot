@@ -26,7 +26,7 @@ app.message(async ({ message, say }) => {
   // const numberRegex = /\d+/g;
   var fd = fs.openSync("log.txt", "a");
   console.log(`received message @ ${date} (message.ts = ${message.ts})`);
-  // fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})\n`);
+  fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})\n`);
   //依頼判定
   if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {　//&& (message.ts　> date) && message.headers['X-Slack-Retry-Num']==0    
       arrayFromFile.ts = message.ts;
