@@ -30,7 +30,7 @@ app.message(async ({ message, say }) => {
   //依頼判定
   if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {　//&& (message.ts　> date) && message.headers['X-Slack-Retry-Num']==0    
       arrayFromFile.ts = message.ts;
-      fs.writeFile(filePath, JSON.stringify(arrayFromFile));
+      fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
       date = new Date().getTime()/1000.0;
       console.log(`processing @ ${date} (message.ts = ${message.ts})`);
       fs.writeSync(fd, `processing @ ${date} (message.ts = ${message.ts})\n`);
