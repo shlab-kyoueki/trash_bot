@@ -25,13 +25,13 @@ app.message(async ({ message, say }) => {
   // await say(`${date},${message.ts}`)
   // const numberRegex = /\d+/g;
   var fd = fs.openSync("log.txt", "a");
-  console.log(`received message @ ${date} (message.ts = ${message.ts})`)
-  fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})\n`);
+  console.log(`received message @ ${date} (message.ts = ${message.ts})`);
+  // fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})\n`);
   //依頼判定
-  if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {　//&& (message.ts　> date) && message.headers['X-Slack-Retry-Num']==0
+  if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {　//&& (message.ts　> date) && message.headers['X-Slack-Retry-Num']==0    
       arrayFromFile.ts = message.ts;
       fs.writeFile(filePath, JSON.stringify(arrayFromFile));
-      var date = new Date().getTime()/1000.0;
+      date = new Date().getTime()/1000.0;
       console.log(`processing @ ${date} (message.ts = ${message.ts})`);
       fs.writeSync(fd, `processing @ ${date} (message.ts = ${message.ts})\n`);
       randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
