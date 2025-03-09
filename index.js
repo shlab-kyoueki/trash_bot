@@ -9,7 +9,7 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
-//元データ
+//元データ　jsonファイルに人がいなくなったら更新する用
 //実際に指名するのはjsonファイルから選ぶ
 const b4_def=["上池 陽汰","久野 翔也","住本 圭","関 隆斗", "中島 魁人", "大野 伶将", "豊島 光太", "前田 篤志", "森中 誠也", "山下 理子"];
 const m1_def=["宇都宮 優巳","王 若泰","川上 拓真","永井 寿弥", "名執 凌磨", "定 良祐", "前河 有紀", "森田 光陽", "安田 隆一", "Cai Biesinger", "Wang Yuhao"];  //"松山 僚太", 
@@ -23,24 +23,24 @@ app.message(async ({ message, say }) => {
   var b4;
   var m1;
   var date = new Date().getTime()/1000.0;
-  // await say(`${date},${message.ts}`)
-  // const numberRegex = /\d+/g;
   var fd = fs.openSync("log.txt", "a");
   console.log(`received message @ ${date} (message.ts = ${message.ts})`);
   fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})\n`);
   //依頼判定
-  if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {　//&& (message.ts　> date) && message.headers['X-Slack-Retry-Num']==0    
+  if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {   
       arrayFromFile.ts = message.ts;
       fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
       date = new Date().getTime()/1000.0;
       console.log(`processing @ ${date} (message.ts = ${message.ts})`);
       fs.writeSync(fd, `processing @ ${date} (message.ts = ${message.ts})\n`);
+      //m1指名
       randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
       m1 = arrayFromFile.m1[randomIndex];  //指名する人を求める
       arrayFromFile.m1.splice(randomIndex, 1);  //指名した分削る
       if(arrayFromFile.m1.length==0){  //いなくなったら補充
         arrayFromFile.m1=m1_def;
       }
+      //b4指名
       var randomIndex = Math.floor(Math.random() * arrayFromFile.b4.length);
       b4 = arrayFromFile.b4[randomIndex];  //指名する人を求める
       arrayFromFile.b4.splice(randomIndex, 1);  //指名した分削る
