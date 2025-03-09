@@ -54,7 +54,6 @@ app.message(async ({ message, say }) => {
   console.log(`finished @ ${date} (message.ts = ${message.ts})`);
   fs.writeSync(fd, `finished @ ${date} (message.ts = ${message.ts})\n\n`);
   fs.closeSync(fd);
-  //不具合デバック用
   // else if(message.text.includes("reset")){
   //   arrayFromFile.b4=b4_def;
   //   arrayFromFile.m1=m1_def;
