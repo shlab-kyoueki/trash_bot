@@ -35,13 +35,20 @@ Our App shows a welcome message when a user opens the "app home".
 
 ### 簡易説明
 - index.js
+
     メインプログラム
+    
     「ゴミ出しお願いします」のメッセージに反応してランダムにB4・M1から各1名選出する
+    
 - arrayData_rev.json
+
     データ保存ファイル
+    
 - log.txt
+
     デバッグ用ログ
 
 ### 引継ぎ
 index.jsのb4_def, m1_defを更新
+
 arrayData_rev.jsonの初期化も必要かもしれない
