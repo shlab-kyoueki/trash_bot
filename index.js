@@ -28,7 +28,7 @@ app.message(async ({ message, say }) => {
   fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})\n`);
   //依頼判定
   if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {   
-      arrayFromFile.ts = message.ts;
+      arrayFromFile.ts = message.ts;  //処理が遅いとslackからメッセージが再送され、1メッセージに対して複数回処理が行われるため、その予防策
       fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
       date = new Date().getTime()/1000.0;
       console.log(`processing @ ${date} (message.ts = ${message.ts})`);
