@@ -1,0 +1,8 @@
+# .gitignore
+
+# 環境変数ファイルを無視
+.env
+
+# 他によく無視するもの（任意）
+node_modules/
+.DS_Store
