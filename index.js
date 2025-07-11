@@ -51,7 +51,7 @@ app.message(async ({ message, say }) => {
       if (arrayFromSupabase.m1.length === 0) {
         arrayFromSupabase.m1 = [...m1_def];
       }
-      var randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
+      var randomIndex = Math.floor(Math.random() * arrayFromSupabase.m1.length);
       m1 = arrayFromSupabase.m1[randomIndex];  //指名する人を求める
       arrayFromSupabase.m1.splice(randomIndex, 1);
       // //b4指名
@@ -65,7 +65,7 @@ app.message(async ({ message, say }) => {
       if (arrayFromSupabase.b4.length === 0) {
         arrayFromSupabase.b4 = [...b4_def];
       }
-      var randomIndex = Math.floor(Math.random() * arrayFromFile.b4.length);
+      var randomIndex = Math.floor(Math.random() * arrayFromSupabase.b4.length);
       b4 = arrayFromSupabase.b4[randomIndex];  //指名する人を求める
       arrayFromSupabase.b4.splice(randomIndex, 1);
       // fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
