@@ -19,7 +19,7 @@ const m1_def=["石井 祐助","久野 翔也","住本 圭","関 隆斗", "中島
 
 //メッセージが投稿された時に呼ばれるメソッド
 app.message(async ({ message, say }) => {
-  const fs = require('fs');
+  // const fs = require('fs');
   // const filePath = 'arrayData_rev.json';
   // const data = fs.readFileSync(filePath, 'utf8');
   // const arrayFromFile = JSON.parse(data);
@@ -28,9 +28,9 @@ app.message(async ({ message, say }) => {
   var b4;
   var m1;
   var date = new Date().getTime()/1000.0;
-  var fd = fs.openSync("log.txt", "a");
+  // var fd = fs.openSync("log.txt", "a");
   console.log(`received message @ ${date} (message.ts = ${message.ts})`);
-  fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})\n`);
+  // fs.writeSync(fd, `received message @ ${date} (message.ts = ${message.ts})\n`);
   //依頼判定
   // if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromFile.ts) {
   if (message.text.includes("ゴミ出しお願いします") && message.ts != arrayFromSupabase.ts) {   
@@ -39,7 +39,7 @@ app.message(async ({ message, say }) => {
       // fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
       date = new Date().getTime()/1000.0;
       console.log(`processing @ ${date} (message.ts = ${message.ts})`);
-      fs.writeSync(fd, `processing @ ${date} (message.ts = ${message.ts})\n`);
+      // fs.writeSync(fd, `processing @ ${date} (message.ts = ${message.ts})\n`);
       // //m1指名
       // randomIndex = Math.floor(Math.random() * arrayFromFile.m1.length);
       // m1 = arrayFromFile.m1[randomIndex];  //指名する人を求める
@@ -74,8 +74,8 @@ app.message(async ({ message, say }) => {
   }
   var date = new Date().getTime()/1000.0;
   console.log(`finished @ ${date} (message.ts = ${message.ts})`);
-  fs.writeSync(fd, `finished @ ${date} (message.ts = ${message.ts})\n\n`);
-  fs.closeSync(fd);
+  // fs.writeSync(fd, `finished @ ${date} (message.ts = ${message.ts})\n\n`);
+  // fs.closeSync(fd);
   // else if(message.text.includes("reset")){
   //   arrayFromFile.b4=b4_def;
   //   arrayFromFile.m1=m1_def;
