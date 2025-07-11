@@ -69,7 +69,7 @@ app.message(async ({ message, say }) => {
       b4 = arrayFromSupabase.b4[randomIndex];  //指名する人を求める
       arrayFromSupabase.b4.splice(randomIndex, 1);
       // fs.writeFileSync(filePath, JSON.stringify(arrayFromFile));
-      await saveArrayData(arrayData);
+      await saveArrayData(arrayFromSupabase);
       await say(`<!channel>\n ${m1}さん, ${b4}さん　お願いします`);
   }
   var date = new Date().getTime()/1000.0;
